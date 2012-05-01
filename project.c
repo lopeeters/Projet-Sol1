@@ -15,6 +15,9 @@ int main( void )
     GLfloat colors[9], coord[9];
    
     FILE* file = fopen("PacificFine.txt","r");
+    if (file == NULL) {
+    	printf("Error : cannot open mesh file :-) \n");
+        exit(0); }
  	fscanf(file, "Number of nodes %d \n", &nNode);
   	X = malloc(sizeof(double)*nNode);
   	Y = malloc(sizeof(double)*nNode);
@@ -55,8 +58,11 @@ int main( void )
 
        
     do {
-        t = glfwGetTime();                  // t = 0  
-        glfwGetMousePos( &mouse, NULL );    // mouse = 389 .... pour supprimer le mouvement...
+        t = glfwGetTime();                  
+ 		// t = 0;  
+        glfwGetMousePos( &mouse, NULL );    
+		// mouse = 389; 
+ 
         
        	glfwGetWindowSize( &width, &height );
      	height = height > 0 ? height : 1;
